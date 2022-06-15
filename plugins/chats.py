@@ -101,7 +101,7 @@ async def _(e):
     request, usage, title, link = None, None, None, None
     if match:
         split = match.split(maxsplit=1)
-        request = bool(split[0] in ["r", "request"])
+        request = split[0] in ["r", "request"]
         title = "Created by Ultroid"
         if len(split) > 1:
             match = split[1]
@@ -190,7 +190,7 @@ async def _(e):
             created_chat_id = r.chats[0].id
             if username:
                 await e.client(UpdateUsernameRequest(created_chat_id, username))
-                result = "https://t.me/" + username
+                result = f"https://t.me/{username}"
             else:
                 result = (
                     await e.client(
